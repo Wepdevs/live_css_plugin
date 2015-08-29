@@ -3,7 +3,7 @@ var inDialog = false;
 
 $(document).ready(function(){
 
-var dialog = $("#dialog");
+var dialog = $("#LiveCss");
 
 
 });
@@ -24,7 +24,7 @@ $("#submit").click(function(){
 $(document).click(function(e){
 
     if($(e.target).prop('id') != "toDialog"){
-        if($(e.target).parents('#dialog').length == 0){
+        if($(e.target).parents('#LiveCss').length == 0){
 
                 $("#cssclass span").remove();
                 $("#cssid span").remove();
@@ -45,7 +45,7 @@ $(document).click(function(e){
 $("#toDialog").click(function(){
 
     if(!inDialog){
-        $( "#dialog" ).dialog();
+        $( "#LiveCss" ).dialog();
     }
 });
 
