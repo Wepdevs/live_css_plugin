@@ -1,0 +1,30 @@
+.page{
+
+    height: 100vh;
+}
+
+
+#dialogForm input{
+    width:60%;
+    clear:right;
+}
+
+
+.formDiv{
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.formDiv label{
+    float:left;
+}
+
+#cssclass, #cssid{
+    margin-bottom:10px;
+}
+
+/*
+#toDialog{
+    position: fixed;
+    left: 10px;
+}  */
