@@ -11,6 +11,7 @@ var dialog = $("#dialog");
 
 $("#submit").click(function(){
 
+        alert('submitted');
 
         toChange.css($("#prop").prop('value'),$("#value").prop('value'))
 
@@ -52,7 +53,7 @@ $("#toDialog").click(function(){
 
 
 $(function() {
-    $( "#dialog" ).html("<div id='cssclass'>Class: </div><div id='cssid'>Id: </div><div id='dialogForm'><form><div class='formDiv'><label>Property</label><input type='text' id='prop' name='prop'></div><div class='formDiv'><label>Value</label><input type='text' id='value' name='value'></div><div class='formDiv'><input id='submit' type='button' value='Set'></div></form></div>");
+   // $( "#dialog" ).html("<div id='cssclass'>Class: </div><div id='cssid'>Id: </div><div id='dialogForm'><form><div class='formDiv'><label>Property</label><input type='text' id='prop' name='prop'></div><div class='formDiv'><label>Value</label><input type='text' id='value' name='value'></div><div class='formDiv'><input id='submit' type='button' value='Set'></div></form></div>");
   });
 
 

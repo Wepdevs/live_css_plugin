@@ -23,8 +23,19 @@
     margin-bottom:10px;
 }
 
-/*
+
 #toDialog{
     position: fixed;
-    left: 10px;
-}  */
+    right: 10px;
+    top: 100px;
+    background-color: grey;
+    opacity: 0.66;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+#dialog{
+
+ /*   background-color: green; */
+}
