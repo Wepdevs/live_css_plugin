@@ -4,6 +4,12 @@
 }
 
 
+#LiveCss{
+
+    display:none;
+}
+
+
 #dialogForm input{
     width:60%;
     clear:right;
@@ -24,7 +30,7 @@
 }
 
 
-#toDialog{
+#LiveCssOn{
     position: fixed;
     right: 10px;
     top: 100px;

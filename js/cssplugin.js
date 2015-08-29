@@ -9,21 +9,14 @@ var dialog = $("#LiveCss");
 });
 
 
-$("#submit").click(function(){
 
-        alert('submitted');
-
-        toChange.css($("#prop").prop('value'),$("#value").prop('value'))
-
-
-});
 
 
 
 
 $(document).click(function(e){
 
-    if($(e.target).prop('id') != "toDialog"){
+    if($(e.target).prop('id') != "LiveCssOn"){
         if($(e.target).parents('#LiveCss').length == 0){
 
                 $("#cssclass span").remove();
@@ -38,11 +31,22 @@ $(document).click(function(e){
                 toChange = $(e.target);
             }
     }
+
+
+    $("#SetCss").click(function(){
+
+            console.log('setting css prop');
+
+            toChange.css($("#prop").prop('value'),$("#value").prop('value'))
+
+
+    });
+
 });
 
 
 
-$("#toDialog").click(function(){
+$("#LiveCssOn").click(function(){
 
     if(!inDialog){
         $( "#LiveCss" ).dialog();
@@ -53,7 +57,24 @@ $("#toDialog").click(function(){
 
 
 $(function() {
-   // $( "#dialog" ).html("<div id='cssclass'>Class: </div><div id='cssid'>Id: </div><div id='dialogForm'><form><div class='formDiv'><label>Property</label><input type='text' id='prop' name='prop'></div><div class='formDiv'><label>Value</label><input type='text' id='value' name='value'></div><div class='formDiv'><input id='submit' type='button' value='Set'></div></form></div>");
+
+    $( "#LiveCss" ).html("<div id=\"cssclass\">Class: </div>"+
+                                      "<div id=\"cssid\">Id: </div>"+
+                                  "<div id=\"dialogForm\">"+
+                                    "  <form>"+
+                                     "    <div class=\"formDiv\">"+
+                                      "       <label>Property</label>"+
+                                        "     <input type=\"text\" id=\"prop\" name=\"prop\">"+
+                                        " </div>"+
+                                         " <div class=\"formDiv\">"+
+                                          "    <label>Value</label>"+
+                                           "   <input type=\"text\" id=\"value\" name=\"value\">"+
+                                         " </div>"+
+                                         " <div class=\"formDiv\">"+
+                                          "    <input id=\"SetCss\" type=\"button\" value=\"Set\">"+
+                                         " </div>"+
+                                      "</form>"+
+                              "</div>");
   });
 
 
