@@ -13,10 +13,37 @@
 </div>
 
 
-    <div id="LiveCssOn">CSS</div>
+<div id="LiveCssOn">CSS</div>
+
+<div id="LiveCss" title="live CSS">
+    <div id="cssclass">Class: </div>
+   <!-- <div id="cssid">Id: </div> -->
+    <div id="dialogForm">
+      <form>
+        <div class="formDiv">
+               <label>Property</label>
+             <input type="text" id="prop" name="prop">
+         </div>
+          <div class="formDiv">
+              <label>Current</label>
+              <input type="text" id="current" name="prop" readonly>
+          </div>
+         <div class="formDiv">
+                <label>Value</label>
+               <input type="text" id="value" name="value">
+         </div>
+         <div class="formDiv">
+                <input id="SetCss" type="button" value="Set">
+         </div>
+          <div class="formDiv">
+              <span id="error"></span>
+          </div>
+        </form>
+    </div>
 
 
-<div id="LiveCss" title="live CSS"></div>
+
+</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

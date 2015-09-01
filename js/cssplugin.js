@@ -3,27 +3,40 @@ var inDialog = false;
 
 $(document).ready(function(){
 
-var dialog = $("#LiveCss");
+ var dialog = $("#LiveCss");
 
 
+    $("#SetCss").click(function(){
+
+        if($("#currentclass").text() != ""){
+             var currentBefore = $("#current").val();
+
+            console.log('setting css prop');
+            toChange.css($("#prop").prop('value'),$("#value").prop('value'));
+            $("#current").val(toChange.css($("#prop").prop('value')));
+
+            if(currentBefore == $("#current").val()){
+                $("#error").text("Value not acceptable!");
+            }
+            else{
+               $("#error").text("");
+               $("#SetCss").prop('disabled','true');
+            }
+        }
+    });
 });
-
-
-
-
-
 
 
 $(document).click(function(e){
 
     if($(e.target).prop('id') != "LiveCssOn"){
-        if($(e.target).parents('#LiveCss').length == 0){
+        if($(e.target).parents('.ui-dialog').length == 0){
 
                 $("#cssclass span").remove();
                 $("#cssid span").remove();
 
-                $classToAdd = $( "<span>" + $(e.target).prop('class')  + "</span>" );
-                $idToAdd = $( "<span>" + $(e.target).prop('id')  + "</span>" );
+                $classToAdd = $( "<span id='currentclass'>" + $(e.target).prop('class')  + "</span>" );
+                $idToAdd = $( "<span id='currentid'>" + $(e.target).prop('id')  + "</span>" );
 
                 $("#cssclass").append($classToAdd);   //text($(e.target).prop('class'));
                 $("#cssid").append($idToAdd);      //text($(e.target).prop('id'));
@@ -31,17 +44,6 @@ $(document).click(function(e){
                 toChange = $(e.target);
             }
     }
-
-
-    $("#SetCss").click(function(){
-
-            console.log('setting css prop');
-
-            toChange.css($("#prop").prop('value'),$("#value").prop('value'))
-
-
-    });
-
 });
 
 
@@ -54,8 +56,21 @@ $("#LiveCssOn").click(function(){
 });
 
 
+$( "#LiveCss" ).bind('keyup', function() {
+
+    if($("#currentclass").text() != ""){
+        var scelta = $("#currentclass").text();
+        var prop = $('#prop').val();
+        $("#current").val($("." + scelta).css(prop));
 
 
+        $("#SetCss").removeAttr('disabled');
+    }
+});
+
+
+
+/*
 $(function() {
 
     $( "#LiveCss" ).html("<div id=\"cssclass\">Class: </div>"+
@@ -77,4 +92,4 @@ $(function() {
                               "</div>");
   });
 
-
+*/
