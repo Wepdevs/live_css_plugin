@@ -1,5 +1,8 @@
 
 var inDialog = false;
+var justSetValue;
+var justSetProp;
+var justSetClass;
 
 $(document).ready(function(){
 
@@ -9,18 +12,26 @@ $(document).ready(function(){
     $("#SetCss").click(function(){
 
         if($("#currentclass").text() != ""){
-             var currentBefore = $("#current").val();
+            var currentBefore = $("#current").val();
 
-            console.log('setting css prop');
-            toChange.css($("#prop").prop('value'),$("#value").prop('value'));
-            $("#current").val(toChange.css($("#prop").prop('value')));
-
-            if(currentBefore == $("#current").val()){
-                $("#error").text("Value not acceptable!");
+            if(justSetValue == $("#value").prop('value') && justSetProp == $("#prop").prop('value') && justSetClass == toChange.prop('class')) {
+                console.log('You\'ve set the same old value baby!');
             }
             else{
-               $("#error").text("");
-               $("#SetCss").prop('disabled','true');
+              console.log('setting css prop');
+              toChange.css($("#prop").prop('value'),$("#value").prop('value'));
+              $("#current").val(toChange.css($("#prop").prop('value')));
+              justSetValue = $("#value").prop('value');
+              justSetProp = $("#prop").prop('value');
+              justSetClass = toChange.prop('class');
+
+              if(currentBefore == $("#current").val()){
+                  $("#error").text("Non acceptable value!");
+              }
+              else{
+                 $("#error").text("");
+                 $("#SetCss").prop('disabled','true');
+              }
             }
         }
     });
@@ -51,9 +62,16 @@ $(document).click(function(e){
 $("#LiveCssOn").click(function(){
 
     if(!inDialog){
-        $( "#LiveCss" ).dialog();
+        $( "#LiveCss" ).dialog({
+
+                                     close : function(){
+                                         $("#LiveCssOn").show();
+                                     }
+                                 });
+        $("#LiveCssOn").hide();
     }
 });
+
 
 
 $( "#LiveCss" ).bind('keyup', function() {
