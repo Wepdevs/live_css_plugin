@@ -1,8 +1,17 @@
 
 var inDialog = false;
-var justSetValue;
-var justSetProp;
-var justSetClass;
+
+var justSet = {
+    value: "",
+    prop: "",
+    class: "",
+    set: function(v,p,c){
+        this.value = v;
+        this.prop = p;
+        this.class = c;
+    }
+}
+
 
 $(document).ready(function(){
 
@@ -14,16 +23,14 @@ $(document).ready(function(){
         if($("#currentclass").text() != ""){
             var currentBefore = $("#current").val();
 
-            if(justSetValue == $("#value").prop('value') && justSetProp == $("#prop").prop('value') && justSetClass == toChange.prop('class')) {
+            if(justSet.value == $("#value").prop('value') && justSet.prop == $("#prop").prop('value') && justSet.class == toChange.prop('class')) {
                 console.log('You\'ve set the same old value baby!');
             }
             else{
               console.log('setting css prop');
               toChange.css($("#prop").prop('value'),$("#value").prop('value'));
               $("#current").val(toChange.css($("#prop").prop('value')));
-              justSetValue = $("#value").prop('value');
-              justSetProp = $("#prop").prop('value');
-              justSetClass = toChange.prop('class');
+              justSet.set($("#value").prop('value'),$("#prop").prop('value'),toChange.prop('class'));
 
               if(currentBefore == $("#current").val()){
                   $("#error").text("Non acceptable value!");
@@ -43,6 +50,9 @@ $(document).click(function(e){
     if($(e.target).prop('id') != "LiveCssOn"){
         if($(e.target).parents('.ui-dialog').length == 0){
 
+                $("#prop").removeAttr('disabled');
+                $("#value").removeAttr('disabled');
+
                 $("#cssclass span").remove();
                 $("#cssid span").remove();
 
@@ -53,6 +63,15 @@ $(document).click(function(e){
                 $("#cssid").append($idToAdd);      //text($(e.target).prop('id'));
 
                 toChange = $(e.target);
+
+
+                if($("#currentclass").text() != ""){
+                        var scelta = $("#currentclass").text();
+                        var prop = $('#prop').val();
+                        $("#current").val($("." + scelta).css(prop));
+
+                        $("#SetCss").removeAttr('disabled');
+                }
             }
     }
 });
@@ -66,8 +85,10 @@ $("#LiveCssOn").click(function(){
 
                                      close : function(){
                                          $("#LiveCssOn").show();
-                                     }
+                                     },
+                                     closeText: "x"
                                  });
+
         $("#LiveCssOn").hide();
     }
 });

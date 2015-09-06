@@ -8,7 +8,40 @@
 
     display:none;
     font-size: 10px;
+
+    background-color: #D3FCD5;
+    padding:3px;
+    padding-top:10px;
+    padding-left:10px;
+    font-family: 'Roboto';
+    border: solid 4px #c2f970;
+
+    -webkit-border-radius: 0px 0px 4px 4px;
+    -moz-border-radius: 0px 0px 4px 4px;
+    border-radius: 0px 0px 4px 4px;
+
 }
+
+.ui-dialog-titlebar{
+    background-color: #C2F970;
+    padding:7px;
+    font-family: 'Roboto';
+    cursor: move;
+
+   -webkit-border-radius: 4px 4px 0px 0px;
+   -moz-border-radius: 4px 4px 0px 0px;
+   border-radius: 4px 4px 0px 0px;
+
+}
+
+.ui-dialog-titlebar-close{
+    float: right;
+    background-color: #C2F970;
+    border:none;
+    color: black;
+    cursor: pointer;
+}
+
 
 
 #dialogForm input{
@@ -61,4 +94,8 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+#SetCss{
+    cursor: pointer;
 }
